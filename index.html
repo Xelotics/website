@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xelotics</title>
+    <title>Xelotics - Coming Soon</title>
     <!-- Dynamic Favicon -->
     <link id="favicon" rel="icon" href="favicon-dark.png">
     <!-- Three.js for WebGL Animation -->
@@ -49,9 +49,15 @@
             z-index: 2;
             text-align: center;
         }
-        img.logo {
-            max-width: 280px;
-            height: auto;
+        /* Transparent style text logo */
+        .coming-soon-logo {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text-color);
+            transition: color 0.3s, -webkit-text-stroke 0.3s;
         }
         .theme-toggle {
             position: absolute;
@@ -79,22 +85,19 @@
     <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
 
     <div class="content">
-        <img id="logo" src="logo-dark.png" alt="Xelotics Logo" class="logo">
+        <div class="coming-soon-logo">Coming Soon</div>
     </div>
 
     <script>
         const favicon = document.getElementById('favicon');
-        const logo = document.getElementById('logo');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
         
         function updateTheme(isDark) {
             if (isDark) {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                logo.src = 'logo-dark.png';
                 favicon.href = 'favicon-dark.png';
             } else {
                 document.documentElement.setAttribute('data-theme', 'light');
-                logo.src = 'logo-light.png';
                 favicon.href = 'favicon-light.png';
             }
         }
