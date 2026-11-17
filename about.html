@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Xelotics</title>
+    <!-- Dynamic Favicon -->
+    <link id="favicon" rel="icon" type="image/png" href="favicon-dark.png">
+    <!-- Google Fonts for Rubik and Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --accent-color: #a855f7;
+            --box-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        [data-theme="light"] {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --accent-color: #7c3aed;
+            --box-bg: rgba(0, 0, 0, 0.03);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --accent-color: #a855f7;
+            --box-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+        }
+
+        #webgl-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--box-bg);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav-logo {
+            height: 35px;
+            width: auto;
+            background: transparent !important;
+        }
+
+        .nav-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--box-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: var(--box-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .theme-toggle:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 30px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .about-card {
+            background: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+
+        .about-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+        }
+
+        .about-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 15px 20px;
+            }
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 24px 20px;
+            background: var(--box-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            box-sizing: border-box;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .github-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color);
+            transition: fill 0.2s, transform 0.2s;
+            background: transparent !important;
+        }
+        .github-icon:hover {
+            fill: var(--accent-color);
+            transform: scale(1.1);
+        }
+    </style>
+    <!-- Three.js for WebGL Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-brand">
+            <img id="nav-logo" src="logo-dark.png" alt="Xelotics Logo" class="nav-logo">
+            <span class="nav-title">Xelotics</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="games.html" class="nav-link">Games</a>
+            <a href="news.html" class="nav-link">News</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+        </div>
+    </nav>
+
+    <div id="webgl-container"></div>
+
+    <div class="main-container">
+        <h1 class="page-title">About Xelotics</h1>
+
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Our Story</h3>
+                <p>Xelotics Games is an indie game studio created purely for fun as a passion project. Currently in the 7th grade, our founders came together to build creative worlds, experiment with cool mechanics, and share our love for gaming with everyone.</p>
+            </div>
+
+            <div class="founders-grid">
+                <div class="about-card">
+                    <h3>Braeck Crawford</h3>
+                    <p><strong>Role:</strong> CEO / CFO</p>
+                    <p style="margin-top: 10px;">Co-founder guiding the studio's vision and managing projects behind the scenes.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Henry Green</h3>
+                    <p><strong>Role:</strong> CEO / CMO / COO</p>
+                    <p style="margin-top: 10px;">Co-founder handling operations, marketing, and bringing creative ideas to life.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span class="brand-font">Xelotics Games</span>
+        <div class="footer-links">
+            <span>Contact: <a href="mailto:Xelocks10@gmail.com">Xelocks10@gmail.com</a></span>
+            <a href="https://GitHub.com/Xelotics/" target="_blank" aria-label="GitHub Profile">
+                <svg class="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const favicon = document.getElementById('favicon');
+        const navLogo = document.getElementById('nav-logo');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function updateTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                navLogo.src = 'logo-dark.png';
+                favicon.href = 'favicon-dark.png';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                navLogo.src = 'logo-light.png';
+                favicon.href = 'favicon-light.png';
+            }
+        }
+
+        updateTheme(prefersDark.matches);
+
+        prefersDark.addEventListener('change', (e) => {
+            updateTheme(e.matches);
+        });
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            updateTheme(currentTheme !== 'dark');
+        }
+
+        // WebGL Particle Background
+        const container = document.getElementById('webgl-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 500;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        function getParticleColor() {
+            return document.documentElement.getAttribute('data-theme') === 'light' ? 0x7c3aed : 0xa855f7;
+        }
+
+        const material = new THREE.PointsMaterial({
+            size: 0.03,
+            color: getParticleColor()
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+        camera.position.z = 3;
+
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            particlesMesh.rotation.y = elapsedTime * 0.04 + mouseX * 0.15;
+            particlesMesh.rotation.x = -mouseY * 0.15;
+            material.color.setHex(getParticleColor());
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
