@@ -61,9 +61,23 @@
             pointer-events: none;
         }
 
+        /* Announcement Banner */
+        .announcement-banner {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(90deg, var(--accent-color), #ec4899);
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
         .theme-toggle {
             position: fixed;
-            top: 20px;
+            top: 60px;
             right: 20px;
             z-index: 10;
             background: var(--box-bg);
@@ -90,7 +104,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
@@ -179,6 +193,13 @@
             text-decoration: underline;
         }
 
+        .footer-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         @media (max-width: 600px) {
             .grid-cards {
                 grid-template-columns: 1fr;
@@ -192,6 +213,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+
+    <div class="announcement-banner">
+        ♟️ Chess Battle Game Coming Soon! Stay tuned for updates.
+    </div>
 
     <div id="webgl-container"></div>
     <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
@@ -218,7 +243,11 @@
 
     <footer>
         <span class="brand-font">Xelotics Games</span>
-        <span>Contact: <a href="mailto:Xelocks10@gmail.com">Xelocks10@gmail.com</a></span>
+        <div class="footer-links">
+            <span>Contact: <a href="mailto:Xelocks10@gmail.com">Xelocks10@gmail.com</a></span>
+            <span>•</span>
+            <span>GitHub: <a href="https://GitHub.com/Xelotics/" target="_blank">GitHub.com/Xelotics/</a></span>
+        </div>
     </footer>
 
     <script>
