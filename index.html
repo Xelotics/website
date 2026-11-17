@@ -6,38 +6,57 @@
     <title>Xelotics - Indie Game Studio</title>
     <!-- Dynamic Favicon -->
     <link id="favicon" rel="icon" href="favicon-dark.png">
-    <!-- Three.js for WebGL Animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google Fonts for Peace Sans and Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Peace Sans';
+            src: url('PeaceSans.woff2') format('woff2'), url('PeaceSans.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         :root {
-            --bg-color: #1a1a1a;
+            --bg-color: #121212;
             --text-color: #ffffff;
-            --accent-color: #764ba2;
+            --accent-color: #a855f7;
+            --box-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
         [data-theme="light"] {
-            --bg-color: #f5f5f5;
-            --text-color: #1a1a1a;
-            --accent-color: #667eea;
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --accent-color: #7c3aed;
+            --box-bg: rgba(0, 0, 0, 0.03);
+            --border-color: rgba(0, 0, 0, 0.1);
         }
         [data-theme="dark"] {
-            --bg-color: #1a1a1a;
+            --bg-color: #121212;
             --text-color: #ffffff;
-            --accent-color: #764ba2;
+            --accent-color: #a855f7;
+            --box-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
-        body {
+
+        html, body {
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow-y: auto;
+            overflow-x: hidden;
             transition: background 0.3s, color 0.3s;
         }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Peace Sans', sans-serif;
+        }
+
         #webgl-container {
             position: fixed;
             top: 0;
@@ -47,79 +66,163 @@
             z-index: 1;
             pointer-events: none;
         }
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            max-width: 600px;
-            padding: 40px 20px;
-        }
-        img.logo {
-            max-width: 220px;
-            height: auto;
-            background: transparent;
-        }
-        .tagline {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-        .about-box {
-            background: rgba(128, 128, 128, 0.1);
-            border: 1px solid var(--text-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 10px;
-            backdrop-filter: blur(5px);
-        }
-        .about-box h2 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            color: var(--accent-color);
-        }
-        .about-box p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
+
         .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 3;
-            background: none;
-            border: 2px solid var(--text-color);
+            z-index: 10;
+            background: var(--box-bg);
+            border: 2px solid var(--border-color);
             color: var(--text-color);
             padding: 8px 16px;
             cursor: pointer;
             border-radius: 20px;
-            font-weight: bold;
-            transition: background 0.2s, color 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            transition: all 0.2s;
         }
         .theme-toggle:hover {
             background: var(--text-color);
             color: var(--bg-color);
         }
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            gap: 30px;
+        }
+
+        img.logo {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.85;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .card {
+            background: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 24px 20px;
+            background: var(--box-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            box-sizing: border-box;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
     </style>
+    <!-- Three.js for WebGL Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
     <div id="webgl-container"></div>
     <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
 
-    <div class="content">
+    <div class="main-container">
         <img id="logo" src="logo-dark.png" alt="Xelotics Logo" class="logo">
-        <p class="tagline">Crafting Worlds, One Pixel at a Time</p>
-        
-        <div class="about-box">
-            <h2>About Us</h2>
-            <p>We are an independent game studio building fun, creative passion projects for players who love great gameplay and cool adventures. Stay tuned as we share our journey!</p>
+        <p class="tagline">Crafting Immersive Indie Worlds</p>
+
+        <div class="grid-cards">
+            <div class="card full-width">
+                <h3>Who We Are</h3>
+                <p>We are an independent game studio driven by passion and creativity. We build unique indie games just for the love of the craft, focusing on memorable player experiences.</p>
+            </div>
+            <div class="card">
+                <h3>Passion Projects</h3>
+                <p>Unbound by corporate timelines, we experiment with fresh gameplay loops and stylized art directions.</p>
+            </div>
+            <div class="card">
+                <h3>Built for Fun</h3>
+                <p>Every world we design is built first and foremost to be deeply entertaining and fun to explore.</p>
+            </div>
         </div>
     </div>
+
+    <footer>
+        <span class="brand-font">Xelotics Games</span>
+        <span>Contact: <a href="mailto:Xelocks10@gmail.com">Xelocks10@gmail.com</a></span>
+    </footer>
 
     <script>
         const favicon = document.getElementById('favicon');
@@ -169,11 +272,11 @@
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
         function getParticleColor() {
-            return document.documentElement.getAttribute('data-theme') === 'light' ? 0x333333 : 0xffffff;
+            return document.documentElement.getAttribute('data-theme') === 'light' ? 0x7c3aed : 0xa855f7;
         }
 
         const material = new THREE.PointsMaterial({
-            size: 0.025,
+            size: 0.03,
             color: getParticleColor()
         });
 
@@ -194,8 +297,8 @@
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
 
-            particlesMesh.rotation.y = elapsedTime * 0.05 + mouseX * 0.2;
-            particlesMesh.rotation.x = -mouseY * 0.2;
+            particlesMesh.rotation.y = elapsedTime * 0.04 + mouseX * 0.15;
+            particlesMesh.rotation.x = -mouseY * 0.15;
             material.color.setHex(getParticleColor());
 
             renderer.render(scene, camera);
