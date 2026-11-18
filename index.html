@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xelotics - Indie Game Studio</title>
-    <!-- Dynamic Favicon -->
     <link id="favicon" rel="icon" type="image/png" href="favicon-dark.png">
-    <!-- Google Fonts for Rubik and Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,13 +22,6 @@
             --accent-color: #7c3aed;
             --box-bg: rgba(0, 0, 0, 0.03);
             --border-color: rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #ffffff;
-            --accent-color: #a855f7;
-            --box-bg: rgba(255, 255, 255, 0.05);
-            --border-color: rgba(255, 255, 255, 0.1);
         }
 
         html, body {
@@ -61,7 +52,6 @@
             pointer-events: none;
         }
 
-        /* Announcement Banner */
         .announcement-banner {
             position: relative;
             z-index: 3;
@@ -75,7 +65,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        /* Navigation Bar */
         nav {
             position: relative;
             z-index: 5;
@@ -96,17 +85,8 @@
             color: var(--text-color);
         }
 
-        .nav-logo {
-            height: 35px;
-            width: auto;
-            background: transparent !important;
-        }
-
-        .nav-title {
-            font-family: 'Rubik', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
+        .nav-logo { height: 35px; width: auto; background: transparent !important; }
+        .nav-title { font-family: 'Rubik', sans-serif; font-size: 1.2rem; font-weight: 700; }
 
         .nav-links {
             display: flex;
@@ -142,10 +122,7 @@
             font-weight: 600;
             transition: all 0.2s;
         }
-        .theme-toggle:hover {
-            background: var(--text-color);
-            color: var(--bg-color);
-        }
+        .theme-toggle:hover { background: var(--text-color); color: var(--bg-color); }
 
         .main-container {
             position: relative;
@@ -162,21 +139,8 @@
             gap: 30px;
         }
 
-        img.logo {
-            max-width: 240px;
-            height: auto;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            opacity: 0.85;
-            margin: 0;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
+        img.logo { max-width: 240px; height: auto; background: transparent !important; border: none !important; }
+        .tagline { font-size: 1.25rem; opacity: 0.85; margin: 0; font-weight: 300; letter-spacing: 1px; }
 
         .grid-cards {
             display: grid;
@@ -195,29 +159,10 @@
             backdrop-filter: blur(8px);
             transition: transform 0.2s, border-color 0.2s;
         }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-color);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-        }
-
-        .card p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            opacity: 0.8;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
+        .card:hover { transform: translateY(-3px); border-color: var(--accent-color); }
+        .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; color: var(--accent-color); }
+        .card p { margin: 0; font-size: 0.95rem; line-height: 1.5; opacity: 0.8; }
+        .full-width { grid-column: span 2; }
 
         footer {
             position: relative;
@@ -234,49 +179,18 @@
             backdrop-filter: blur(5px);
             box-sizing: border-box;
         }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .github-icon {
-            width: 24px;
-            height: 24px;
-            fill: var(--text-color);
-            transition: fill 0.2s, transform 0.2s;
-            background: transparent !important;
-        }
-        .github-icon:hover {
-            fill: var(--accent-color);
-            transform: scale(1.1);
-        }
+        footer a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .github-icon { width: 24px; height: 24px; fill: var(--text-color); transition: fill 0.2s, transform 0.2s; background: transparent !important; }
+        .github-icon:hover { fill: var(--accent-color); transform: scale(1.1); }
 
         @media (max-width: 600px) {
-            .grid-cards {
-                grid-template-columns: 1fr;
-            }
-            .full-width {
-                grid-column: span 1;
-            }
-            nav {
-                padding: 15px 20px;
-            }
+            .grid-cards { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            nav { padding: 15px 20px; }
         }
     </style>
-    <!-- Three.js for WebGL Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -295,6 +209,7 @@
             <a href="news.html" class="nav-link">News</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="jimmy.html" class="nav-link">Jimmy</a>
+            <a href="contact.html" class="nav-link">Contact</a>
             <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
         </div>
     </nav>
@@ -354,68 +269,35 @@
         }
 
         updateTheme(prefersDark.matches);
-
-        prefersDark.addEventListener('change', (e) => {
-            updateTheme(e.matches);
-        });
+        prefersDark.addEventListener('change', (e) => updateTheme(e.matches));
 
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             updateTheme(currentTheme !== 'dark');
         }
 
-        // WebGL Particle Background
         const container = document.getElementById('webgl-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
         const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 500;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 10;
-        }
-
+        const posArray = new Float32Array(500 * 3);
+        for(let i = 0; i < 500 * 3; i++) posArray[i] = (Math.random() - 0.5) * 10;
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-        function getParticleColor() {
-            return document.documentElement.getAttribute('data-theme') === 'light' ? 0x7c3aed : 0xa855f7;
-        }
-
-        const material = new THREE.PointsMaterial({
-            size: 0.03,
-            color: getParticleColor()
-        });
-
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0xa855f7 });
         const particlesMesh = new THREE.Points(particlesGeometry, material);
         scene.add(particlesMesh);
         camera.position.z = 3;
 
-        let mouseX = 0;
-        let mouseY = 0;
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
-        });
-
-        const clock = new THREE.Clock();
-
         function animate() {
             requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
-
-            particlesMesh.rotation.y = elapsedTime * 0.04 + mouseX * 0.15;
-            particlesMesh.rotation.x = -mouseY * 0.15;
-            material.color.setHex(getParticleColor());
-
+            particlesMesh.rotation.y += 0.001;
             renderer.render(scene, camera);
         }
-
         animate();
 
         window.addEventListener('resize', () => {
