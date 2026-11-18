@@ -69,40 +69,40 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             background: var(--box-bg);
             border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 50px 40px;
+            border-radius: 24px;
             backdrop-filter: blur(12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             text-align: center;
-            max-width: 400px;
+            max-width: 480px;
             width: 90%;
             box-sizing: border-box;
         }
 
         /* Sad Jumping Jimmy Animation */
         .jimmy-jump {
-            width: 130px;
-            height: 150px;
+            width: 150px;
+            height: 170px;
             animation: jumpAnimation 1.2s infinite ease-in-out;
         }
 
         @keyframes jumpAnimation {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-22px); }
+            50% { transform: translateY(-25px); }
         }
 
         .btn {
             background: var(--accent-color);
             border: none;
             color: #ffffff;
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
@@ -110,7 +110,6 @@
         }
         .btn:hover { opacity: 0.9; }
     </style>
-    <!-- Three.js for WebGL Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -120,37 +119,22 @@
     <div class="error-container">
         <!-- Minimalistic Sad Jimmy Jumping for Unreachable String -->
         <svg class="jimmy-jump" viewBox="0 0 130 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Unreachable String hanging from top -->
             <path d="M95 0 Q90 25 105 45" stroke="#a855f7" stroke-width="3" stroke-dasharray="4 4" fill="none"/>
             <circle cx="105" cy="45" r="4" fill="#a855f7"/>
-
-            <!-- Sad Floppy Ears -->
             <path d="M35 72 C20 75, 18 105, 30 110 C38 112, 40 92, 40 82 Z" fill="#D99B26"/>
             <path d="M95 72 C110 75, 112 105, 100 110 C92 112, 90 92, 90 82 Z" fill="#D99B26"/>
-            
-            <!-- Head -->
             <rect x="35" y="58" width="60" height="60" rx="26" fill="#F4B942"/>
-            
-            <!-- Snout -->
             <rect x="47" y="86" width="36" height="24" rx="12" fill="#FDE08D"/>
-            
-            <!-- Sad Downward Eyes -->
             <path d="M46 76 Q49 73 52 76" stroke="#1E1E24" stroke-width="2.5" stroke-linecap="round"/>
             <path d="M78 76 Q81 73 84 76" stroke="#1E1E24" stroke-width="2.5" stroke-linecap="round"/>
-            
-            <!-- Nose -->
             <rect x="59" y="88" width="12" height="8" rx="4" fill="#1E1E24"/>
-            
-            <!-- Sad Frown -->
             <path d="M54 105 Q65 99 76 105" stroke="#1E1E24" stroke-width="2.5" stroke-linecap="round"/>
-            
-            <!-- Reaching Paw Up -->
             <circle cx="85" cy="52" r="8" fill="#F4B942"/>
         </svg>
 
-        <h1 style="margin: 0; color: var(--accent-color); font-size: 2rem;">404</h1>
-        <h3 style="margin: 0; font-size: 1.2rem;">Page Not Found</h3>
-        <p style="margin: 0; font-size: 0.95rem; opacity: 0.8;">
+        <h1 style="margin: 0; color: var(--accent-color); font-size: 3.2rem;">404</h1>
+        <h2 style="margin: 0; font-size: 1.6rem;">Page Not Found</h2>
+        <p style="margin: 0; font-size: 1.1rem; opacity: 0.85; line-height: 1.5;">
             Jimmy can't reach the page you're looking for! Let's get you back to safety.
         </p>
         <a href="index.html" class="btn" style="margin-top: 10px;">Return Home</a>
@@ -166,7 +150,6 @@
         updateTheme(prefersDark.matches);
         prefersDark.addEventListener('change', (e) => updateTheme(e.matches));
 
-        // WebGL 3D Particle Background
         const container = document.getElementById('webgl-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
